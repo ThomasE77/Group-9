@@ -3,4 +3,4 @@ Thomas Stockstill  (team lead)
 
 Dylan Johnson 
 
-Lamaya Newsome ljn72 maya111801@gmail.com 
+Lamaya Newsome ljn72 LaMayaNewsome maya111801@gmail.com 
