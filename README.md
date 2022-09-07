@@ -5,6 +5,8 @@ Dylan Johnson     Dsj182  DylanJ010 dylan38821@gmail.com
 
 LaMaya Newsome    Ljn72 LaMayaNewsome maya111801@gmail.com 
 
+Shawqi Basoodan   Skb415 Shawqi1010  Shawqi1010@hotmail.com
+
 SCRUM Development process
 HTML - Python
 Flask/Django web development framwork
