@@ -14,4 +14,8 @@ Flask/Django web development framwork
 Title = Dawg Barks
 
 Features :
-Allows registration of new profiles 
+Allows registration of new profiles,
+Secure login and signout,
+Ability to compose, edit and post status on their timeline,
+Ability to send and accept friend requests,
+Ability to like, comment, and share the status/timeline post of friends.
