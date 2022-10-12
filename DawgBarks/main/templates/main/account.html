@@ -1,0 +1,35 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{user.username|title}}</title>
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="col s12 m7">
+              <div class="card">
+                <div class="card-image">
+                  <img src="../../media/blank-profile-picture.png">
+                </div>
+                <div>
+                    <span class="card-title"><h1>{{user.username|title}}<h1></span>
+                </div>
+                <div class="card-content">
+                    <h2>Bio:</h2>
+                  <p>Insert bio for {{user.username|title}} here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+    </body>
+    
+</html>
+
+{% endblock %}

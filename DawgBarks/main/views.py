@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Tutorial
+from .models import Account
+
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -11,6 +13,9 @@ from .forms import NewUserForm
 def homepage(request):
     return render(request = request,
                   template_name="main/home.html")
+
+def account(request):
+    return render(request, "main/account.html")
 
 def register(request):
     if request.method == "POST":
@@ -50,7 +55,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
-                return redirect('/')
+                return redirect('/account/')
             else:
                 messages.error(request, "Invalid username or password.")
         else:
