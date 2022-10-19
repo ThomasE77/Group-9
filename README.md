@@ -2,6 +2,7 @@ Group 9
 Dawg Barks
 
 Thomas Stockstill Tes192 ThomasE77 tes192@msstate.edu (team lead)
+
 Dylan Johnson     Dsj182  DylanJ010 dylan38821@gmail.com
 
 LaMaya Newsome    Ljn72 LaMayaNewsome maya111801@gmail.com 
