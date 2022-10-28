@@ -23,9 +23,16 @@
 
           
 
-            <div class="container m-auto"> 
+            <div class="bg-white flex flex-col justify-between"> 
+                <div class="bg-maroon-800 py-6">
+                    <div class="max-w-6xl ml-2">
 
-                <h1 class="text-2xl leading-none text-gray-900 tracking-tight mt-3"><a href="/">Home</a> / Account Setting for <b>{{user.username}}</b> </h1>
+                    <h1 class="text-2xl leading-none tracking-tight text-white"><a href="/">Home</a>/ Account Settings for <b>{{user.username}}</b> </h1>
+                    </div>
+
+
+                </div>
+
                 <!-- <ul class="mt-5 -mr-3 flex-nowrap lg:overflow-hidden overflow-x-scroll uk-tab">
                     <li class="uk-active"><a href="#">General</a></li>
                     <li><a href="#">Profile</a></li>
@@ -37,9 +44,9 @@
                 </ul> -->
                 <br>
                 <hr>
-                <div class="grid lg:grid-cols-3 mt-12 gap-8">
+                <div class="">
                     <div>
-                        <h3 class="text-xl mb-2"> General</h3>
+                        <h3 class="text-xl mb-2"><b> General</b></h3>
                         <p></p>
                     </div>
                     <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2">
@@ -50,24 +57,29 @@
                            
                            
                             <div class="col-span-2">
-                                <label for=""> Profile Image</label>
                                 <img width="100" height="100" src="{{user_profile.profileimg.url}}" />
-                                <input type="file" name="image" value="" class="shadow-none bg-gray-100">
+                                    <div class="shadow-none bg-white border-solid border border-gray-400">
+                                        <input type="file" name="image" value="">
+                                    </div>
                             </div>
                             <div class="col-span-2">
-                                <label for="about">Bio</label>  
-                                <textarea id="about" name="bio" rows="3"  class="shadow-none bg-gray-100">{{user_profile.bio}}</textarea>
+                                <label for="about" class="text-lg text-gray-900">Bio</label>  
+                                    <div class="shadow-none bg-white border-solid border-gray-400 border">
+                                        <textarea id="about" name="bio" rows="3">{{user_profile.bio}}</textarea>
+                                    </div>
                             </div> 
                             <div class="col-span-2">
-                                <label for=""> Location</label>
-                                <input type="text" name="location" value="{{user_profile.location}}" class="shadow-none bg-gray-100">
+                                <label for="" class="text-lg text-gray-900"> Location</label>
+                                    <div class="shadow-none bg-white border-solid border border-gray-400">
+                                        <input type="text" name="location" value="{{user_profile.location}}">
+                                    </div>
                             </div>
                             
                        </div> 
     
                        <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
-                           <button class="p-2 px-4 rounded bg-gray-50 text-red-500"> <a href="/">Cancel</a> </button>
-                           <button type="submit" class="button bg-blue-700"> Save </button>
+                           <button class="p-2 px-4 rounded border border-solid border-gray-400 bg-gray-200 text-gray-800"> <a href="/">Cancel</a> </button>
+                           <button type="submit" class="bg-maroon-800 p-2 px-4 rounded text-white"> Save </button>
                        </div>
                     </form>
     
