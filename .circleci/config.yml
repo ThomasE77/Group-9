@@ -8,7 +8,7 @@ jobs:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      - run: python3 view.py
+      - run: python3 core/views.py
   test:
     working_directory: ~/circleci-python
     docker:
