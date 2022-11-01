@@ -23,10 +23,10 @@
 <div class="theme-layout">
 	
 	</div>
-	
+
 	<section>
 			<div class="feature-photo">
-				<figure><img src="{% static 'images/resources/timeline-1.jpg' %}" alt=""></figure>
+				<figure><img src="{% static 'images/resources/timeline-1.jpg' %}" alt="" class="user_pic"></figure>
 				<form action="/follow" method="POST">
 					{% csrf_token %}
 					<div class="add-btn">
@@ -53,7 +53,7 @@
 					<input type="hidden" value="{{user_object.username}}" name="user" />
 
 					{% if user_object.username == user.username %}
-					<a href="/settings" data-ripple="">Account Settings</a>
+					<a href="/settings" data-ripple="" class="bg-gray-400">Account Settings</a>
 					{% else %}
 					<a data-ripple=""><button type="submit" style="background-color: #ffc0cb; border: #ffc0cb;">{{button_text}}</button></a>
 					{% endif %}
@@ -148,8 +148,9 @@
 					
 										{% for post in user_posts %}
 										<li>
-											<a class="strip" href="{{post_images.url}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="/media/post_images/{{post.image.url}}" style="height: 250px; width: 300px;" alt=""></a>
+											<a class="strip" href="" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+												<img src="{{post.image.url}}" style="height: 250px; width: 300px;" alt=""></a>
+												
 										</li>
 										{% endfor %}
 										
