@@ -115,6 +115,16 @@ def like_post(request):
         return redirect('/')
 
 @login_required(login_url='signin')
+def share_post(request):
+    username = request.user.username
+    post_id = request.Get.get('post_id')
+    
+    new_share = Post.objects.create(user=username, image=post_id)
+    new_share.save()
+
+    return redirect('/')
+
+@login_required(login_url='signin')
 def profile(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
