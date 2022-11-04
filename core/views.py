@@ -35,7 +35,7 @@ def index(request):
     for user in user_following:
         user_list = User.objects.get(username=user.user)
         user_following_all.append(user_list)
-    
+
     new_suggestions_list = [x for x in list(all_users) if (x not in list(user_following_all))]
     current_user = User.objects.filter(username=request.user.username)
     final_suggestions_list = [x for x in list(new_suggestions_list) if ( x not in list(current_user))]
@@ -120,6 +120,8 @@ def profile(request, pk):
     user_profile = Profile.objects.get(user=user_object)
     user_posts = Post.objects.filter(user=pk)
     user_post_length = len(user_posts)
+    user_allofem = Profile.objects.all()
+
 
     follower = request.user.username
     user = pk
@@ -129,8 +131,15 @@ def profile(request, pk):
     else:
         button_text = 'Follow'
 
+
+    users_followed = FollowersCount.objects.filter(follower=pk)
+
     user_followers = len(FollowersCount.objects.filter(user=pk))
     user_following = len(FollowersCount.objects.filter(follower=pk))
+
+    users_followed_list = []
+    for users in users_followed:
+        users_followed_list.append(users.user)
 
     context = {
         'user_object': user_object,
@@ -140,6 +149,7 @@ def profile(request, pk):
         'button_text': button_text,
         'user_followers': user_followers,
         'user_following': user_following,
+        'users_followed_list': users_followed_list,
     }
     return render(request, 'profile.html', context)
 
