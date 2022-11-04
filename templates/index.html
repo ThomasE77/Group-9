@@ -116,7 +116,7 @@
                         
                          <!-- Notification -->
 
-                        <!-- <a href="#" class="header-links-item">
+                        <a href="#" class="header-links-item">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M12 22a2.02 2.02 0 0 1-2.01-2h4a2.02 2.02 0 0 1-.15.78a2.042 2.042 0 0 1-1.44 1.18h-.047A1.922 1.922 0 0 1 12 22zm8-3H4v-2l2-1v-5.5a8.065 8.065 0 0 1 .924-4.06A4.654 4.654 0 0 1 10 4.18V2h4v2.18c2.579.614 4 2.858 4 6.32V16l2 1v2z" fill="currentColor"/></g></svg>
                         </a>
                         <div uk-drop="mode: click;offset: 4" class="header_dropdown">
@@ -132,7 +132,6 @@
                                             <p> <strong class="text-link" >Taiye</strong>  
                                                 <span class="text-link"> is following you  </span>
                                             </p>
-                                            <span class="time-ago"> 2 hours ago </span>
                                         </div>
                                     </a>
                                 </li>
@@ -187,7 +186,7 @@
 
             <div class="container m-auto">
 
-                <!--<h1 class="lg:text-2xl text-lg font-extrabold leading-none text-gray-900 tracking-tight mb-5"> Feed </h1>--->
+                <h1 class="lg:text-2xl text-lg font-extrabold leading-none text-gray-900 tracking-tight mb-5"> Feed </h1>--->
 
                 <div class="lg:flex justify-center lg:space-x-10 lg:space-y-0 space-y-5">
 
@@ -202,7 +201,7 @@
                             <!-- post header-->
                             <div class="flex justify-between items-center px-4 py-3">
                                 <div class="flex flex-1 items-center space-x-4">
-                                    <!-- <a href="#">
+                                    <a href="#">
                                         <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
                                             <img src="{% static 'assets/images/avatars/avatar-2.jpg' %}" class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                         </div>
@@ -211,14 +210,19 @@
                                 </div>
                               <div>
                                 <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a>
-                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100  " uk-drop="mode: hover;pos: top-right">
+                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100" uk-drop="mode: hover;pos: top-right"> 
                               
                                     <ul class="space-y-1">
-                                      <!-- <li> 
+                                      <li> 
                                           <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
+                                            <form action="upload" method="POST" enctype="multipart/form-data" >
+                                                {% csrf_token %}
+                                                <div>
+                                                <button class="button bg-blue-700" type="submit" >Share</button>
+                                                </form>
                                            <i class="uil-share-alt mr-1"></i> Share
                                           </a> 
-                                      </li> -->
+                                      </li>
                                       <!-- <li> 
                                           <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
                                            <i class="uil-edit-alt mr-1"></i>  Edit Post 
@@ -237,11 +241,11 @@
                                       <!-- <li>
                                         <hr class="-mx-2 my-2 ">
                                       </li> -->
-                                      <li> 
+                                      <!-- <li> 
                                           <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md ">
                                            <i class="uil-trash-alt mr-1"></i>  Delete Post
                                           </a> 
-                                      </li>
+                                      </li>-->
                                     </ul>
                                 
                                 </div>
@@ -296,12 +300,12 @@
                                         Liked <strong> taiye</strong> and <strong> 209 Others </strong>
                                     </div>
                                 </div> -->
-
+                                <!---->
                                 <p>
                                     <a href="/profile/{{post.user}}"><strong>{{post.user}}</strong></a> {{post.caption}}
                                 </p>
 
-                                <!-- <div class="border-t pt-4 space-y-4 ">
+                                 <div class="border-t pt-4 space-y-4 ">
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
                                             <img src="{% static 'assets/images/avatars/avatar-1.jpg' %}" alt="" class="absolute h-full rounded-full w-full">
@@ -324,11 +328,10 @@
                                     </div>
                                 </div> -->
 
-                                <!-- <div class="bg-gray-100 bg-gray-100 rounded-full rounded-md relative ">
+                                <div class="bg-gray-100 bg-gray-100 rounded-full rounded-md relative ">
                                     <input type="text" placeholder="post a comment" class="bg-transparent max-h-10 shadow-none">
+                                    <button class="button" type="submit" >Comment</button>
                                     <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
-                                        <a href="#"> <i class="uil-image"></i></a>
-                                        <a href="#"> <i class="uil-video"></i></a>
                                     </div>
                                 </div> -->
     
