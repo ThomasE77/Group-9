@@ -12,6 +12,7 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
     profileimg = models.ImageField(upload_to='profile_images', default='blank-profile-picture.png')
     location = models.CharField(max_length=100, blank=True)
+    no_of_downloads = models.IntegerField()
 
     def __str__(self):
         return self.user.username
@@ -34,7 +35,15 @@ class LikePost(models.Model):
     def __str__(self):
         return self.username
 
+
 class FollowersCount(models.Model):
+    follower = models.CharField(max_length=100)
+    user = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user
+
+class Download(models.Model):
     follower = models.CharField(max_length=100)
     user = models.CharField(max_length=100)
 

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post, LikePost, FollowersCount
+from .models import Profile, Post, LikePost, FollowersCount, Download
 from itertools import chain
 import random
 
@@ -18,6 +18,7 @@ def index(request):
     feed = []
 
     user_following = FollowersCount.objects.filter(follower=request.user.username)
+    user_downloads = Download.objects.filter(follower=request.user.username)
 
     for users in user_following:
         user_following_list.append(users.user)
@@ -114,14 +115,18 @@ def like_post(request):
         return redirect('/')
 
 @login_required(login_url='signin')
-def share_post(request):
+def downloads(request):
     username = request.user.username
     post_id = request.Get.get('post_id')
-    
-    new_share = Post.objects.create(user=username, image=post_id)
-    new_share.save()
 
-    return redirect('/')
+    post = Post.objects.get(id=post_id)
+    
+    new_download = Post.objects.create(user=username, image=post_id)
+    new_download.save()
+    user.no_of_downloads = user.no_of_downloads+1
+    user.save()
+
+    return redirect('/') 
 
 @login_required(login_url='signin')
 def profile(request, pk):
@@ -142,6 +147,8 @@ def profile(request, pk):
 
 
     users_followed = FollowersCount.objects.filter(follower=pk)
+    users_downloads = Download.objects
+    print(users_downloads)
 
     user_followers = len(FollowersCount.objects.filter(user=pk))
     user_following = len(FollowersCount.objects.filter(follower=pk))
@@ -159,6 +166,7 @@ def profile(request, pk):
         'user_followers': user_followers,
         'user_following': user_following,
         'users_followed_list': users_followed_list,
+        'users_downloads': users_downloads,
     }
     return render(request, 'profile.html', context)
 
