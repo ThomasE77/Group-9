@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post, LikePost, FollowersCount, Download
+from .models import Profile, Post, LikePost, FollowersCount, DownloadCount
 from itertools import chain
 import random
 
@@ -18,7 +18,7 @@ def index(request):
     feed = []
 
     user_following = FollowersCount.objects.filter(follower=request.user.username)
-    user_downloads = Download.objects.filter(follower=request.user.username)
+    user_downloads = DownloadCount.objects.filter(follower=request.user.username)
 
     for users in user_following:
         user_following_list.append(users.user)
@@ -105,12 +105,12 @@ def like_post(request):
     if like_filter == None:
         new_like = LikePost.objects.create(post_id=post_id, username=username)
         new_like.save()
-        post.no_of_likes = post.no_of_likes+1
+        profile.no_of_downloads = profile.no_of_downloads+1
         post.save()
         return redirect('/')
     else:
         like_filter.delete()
-        post.no_of_likes = post.no_of_likes-1
+        profile.no_of_downloads = profile.no_of_downloads-1
         post.save()
         return redirect('/')
 
@@ -123,8 +123,8 @@ def downloads(request):
     
     new_download = Post.objects.create(user=username, image=post_id)
     new_download.save()
-    user.no_of_downloads = user.no_of_downloads+1
-    user.save()
+    profile.no_of_downloads = user.no_of_downloads+1
+    profile.save()
 
     return redirect('/') 
 
@@ -145,10 +145,8 @@ def profile(request, pk):
     else:
         button_text = 'Follow'
 
-
     users_followed = FollowersCount.objects.filter(follower=pk)
-    users_downloads = Download.objects
-    print(users_downloads)
+    user_download_count = DownloadCount.objects.filter(follower=pk)
 
     user_followers = len(FollowersCount.objects.filter(user=pk))
     user_following = len(FollowersCount.objects.filter(follower=pk))
@@ -166,7 +164,7 @@ def profile(request, pk):
         'user_followers': user_followers,
         'user_following': user_following,
         'users_followed_list': users_followed_list,
-        'users_downloads': users_downloads,
+        'users_downloads': user_download_count,
     }
     return render(request, 'profile.html', context)
 
